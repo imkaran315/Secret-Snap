@@ -8,6 +8,8 @@
 import UIKit
 
 class LockScreenVC: UIViewController {
+    
+    private let password = "1234"
 
     @IBOutlet weak var passwordField: UITextField!
     override func viewDidLoad() {
@@ -26,9 +28,11 @@ extension LockScreenVC {
 
 extension LockScreenVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         let text = passwordField.text ?? ""
-        print(text + string)
-        if text + string == "1234" {
+        
+        // actual types string = text + replacementString
+        if text + string == password {
             moveToHome()
         }
         return true

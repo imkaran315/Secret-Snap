@@ -13,18 +13,12 @@ class CoreDataManager {
 
     static let shared = CoreDataManager()
 
-    let persistentContainer: NSPersistentContainer
-
-    private init() {
-        persistentContainer = NSPersistentContainer(name: "MediaAssetModel")
-        persistentContainer.loadPersistentStores { (description, error) in
-            if let error = error {
-                fatalError("Unable to load persistent stores: \(error)")
-            }
-        }
-    }
+    private init(){}
+    
+    let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistenContainer
 
     // Save media asset with file path and type
+    
     func saveMediaAsset(_ mediaAsset: MediaAsset) {
         let context = persistentContainer.viewContext
         let mediaAssetEntity = MediaAssetEntity(context: context)
@@ -35,12 +29,7 @@ class CoreDataManager {
         mediaAssetEntity.type = mediaAsset.type.rawValue
         mediaAssetEntity.duration = mediaAsset.duration ?? 0
 
-        do {
-            try context.save()
-            print("Media asset saved!")
-        } catch {
-            print("Failed to save media asset: \(error)")
-        }
+        saveContext()
     }
 
     // Fetch all media assets
@@ -78,6 +67,16 @@ class CoreDataManager {
             print("All media assets deleted!")
         } catch {
             print("Failed to delete media assets: \(error)")
+        }
+    }
+    
+    private func saveContext() {
+        let context = persistentContainer.viewContext
+        do {
+            try context.save()
+            print("Media asset saved!")
+        } catch {
+            print("Failed to save media asset: \(error)")
         }
     }
 }

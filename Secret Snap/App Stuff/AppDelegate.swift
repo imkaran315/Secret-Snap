@@ -6,10 +6,20 @@
 //
 
 import UIKit
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    lazy var persistenContainer : NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "MediaAssetModel")
+        container.loadPersistentStores { description, error in
+            if let error{
+                print("ERROR: Could not load persistent container")
+            }
+        }
+        return container
+    }()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

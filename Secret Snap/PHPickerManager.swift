@@ -40,7 +40,9 @@ class PHPickerManager: PHPickerViewControllerDelegate {
                 result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (object, error) in
                     if let image = object as? UIImage {
                         let fileName = UUID().uuidString + ".jpg"
-                        if let result = self?.saveImageToDocumentsDirectory(image: image, fileName: fileName), result == true{
+                        let result = FileHandler.shared.saveImageToDocumentsDirectory(image: image, fileName: fileName)
+                        
+                        if result == true{
                             let mediaAsset = MediaAsset(
                                 filePath: fileName,
                                 assetIdentifier: assetIdentifier,
@@ -59,10 +61,10 @@ class PHPickerManager: PHPickerViewControllerDelegate {
                 result.itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.movie.identifier) { (url, error) in
                     if let url = url {
                         // Save the video and fetch duration
-                        if self.saveVideoToDocumentsDirectory(url: url){
+                        if FileHandler.shared.saveVideoToDocumentsDirectory(url: url){
                             
                             let fileName = url.lastPathComponent
-                            let duration = self.getVideoDuration(url: url)
+                            let duration = FileHandler.shared.getVideoDuration(url: url)
                             
                             let mediaAsset = MediaAsset(
                                 filePath: fileName,
@@ -71,9 +73,9 @@ class PHPickerManager: PHPickerViewControllerDelegate {
                                 creationDate: .now,
                                 duration: duration
                             )
+                            print(mediaAsset.self)
                             newAssets.append(mediaAsset)
                         }
-                     
                     }
                     dispatchGroup.leave()
                 }
@@ -86,63 +88,7 @@ class PHPickerManager: PHPickerViewControllerDelegate {
         }
     }
     
-    func saveImageToDocumentsDirectory(image: UIImage, fileName: String) -> Bool {
-        guard let data = image.jpegData(compressionQuality: 1.0) ?? image.pngData() else {
-            return false
-        }
-        
-        let fileManager = FileManager.default
-        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let fileURL = documentsURL.appendingPathComponent(fileName)
-
-        do {
-            try data.write(to: fileURL)
-            print("Image saved successfully at: \(fileURL.path)")
-            return true
-        } catch {
-            print("Error saving image: \(error.localizedDescription)")
-            return false
-        }
-    }
-
-    func saveVideoToDocumentsDirectory(url: URL) -> Bool {
-        let fileManager = FileManager.default
-        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let fileNameWithExtension = url.lastPathComponent
-        let destinationURL = documentsURL.appendingPathComponent(fileNameWithExtension)
-        
-        do {
-            try fileManager.copyItem(at: url, to: destinationURL)
-            print("Video saved successfully at: \(destinationURL.path)")
-            return true
-        } catch {
-            print("Error saving video: \(error.localizedDescription)")
-            return false
-        }
-    }
-
-    func getFileFromDocumentsDirectory(fileName: String) -> Data? {
-        let fileManager = FileManager.default
-        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let fileURL = documentsURL.appendingPathComponent(fileName)
-        
-        do {
-            let fileData = try Data(contentsOf: fileURL)
-            return fileData
-        } catch {
-            print("Error reading file: \(error.localizedDescription)")
-            return nil
-        }
-    }
     
-    func getVideoDuration(url: URL) -> Double {
-        let asset = AVAsset(url: url)
-        let duration = asset.duration
-        let durationInSeconds = CMTimeGetSeconds(duration)
-        
-        print("Video duration: \(durationInSeconds) seconds")
-        return durationInSeconds
-    }
 }
 // MARK: - UIViewController Extension
 

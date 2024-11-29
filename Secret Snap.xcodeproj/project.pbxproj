@@ -18,7 +18,10 @@
 		3194EEFC2C95AF22005EA48F /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3194EEFA2C95AF22005EA48F /* HomeCollectionViewCell.xib */; };
 		3194EEFF2C95CB7B005EA48F /* MediaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194EEFE2C95CB7B005EA48F /* MediaAsset.swift */; };
 		3194EF012C960AE6005EA48F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194EF002C960AE6005EA48F /* CoreDataManager.swift */; };
-		3194EF072C961AA6005EA48F /* MediaAssetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3194EF052C961AA6005EA48F /* MediaAssetModel.xcdatamodeld */; };
+		31FBA2A12CF77CCE007C66C8 /* MediaAssetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31FBA29F2CF77CCE007C66C8 /* MediaAssetModel.xcdatamodeld */; };
+		31FBA2A62CF8E8DF007C66C8 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FBA2A52CF8E8D9007C66C8 /* FileHandler.swift */; };
+		31FBA2AA2CFA10ED007C66C8 /* PreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FBA2A92CFA10ED007C66C8 /* PreviewVC.swift */; };
+		31FBA2AC2CFA2CCC007C66C8 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FBA2AB2CFA2CCC007C66C8 /* HapticManager.swift */; };
 		31FF0A3D2C94C6F1009B0E63 /* PHPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF0A3C2C94C6F0009B0E63 /* PHPickerManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +39,10 @@
 		3194EEFA2C95AF22005EA48F /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		3194EEFE2C95CB7B005EA48F /* MediaAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAsset.swift; sourceTree = "<group>"; };
 		3194EF002C960AE6005EA48F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		3194EF062C961AA6005EA48F /* MediaAssetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MediaAssetModel.xcdatamodel; sourceTree = "<group>"; };
+		31FBA2A02CF77CCE007C66C8 /* MediaAssetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MediaAssetModel.xcdatamodel; sourceTree = "<group>"; };
+		31FBA2A52CF8E8D9007C66C8 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
+		31FBA2A92CFA10ED007C66C8 /* PreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewVC.swift; sourceTree = "<group>"; };
+		31FBA2AB2CFA2CCC007C66C8 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		31FF0A3C2C94C6F0009B0E63 /* PHPickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPickerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,6 +60,7 @@
 		3165D59E2C8C3CBA00FD4649 = {
 			isa = PBXGroup;
 			children = (
+				31FBA29F2CF77CCE007C66C8 /* MediaAssetModel.xcdatamodeld */,
 				3165D5A92C8C3CBA00FD4649 /* Secret Snap */,
 				3165D5A82C8C3CBA00FD4649 /* Products */,
 			);
@@ -70,15 +77,11 @@
 		3165D5A92C8C3CBA00FD4649 /* Secret Snap */ = {
 			isa = PBXGroup;
 			children = (
-				3165D5AA2C8C3CBA00FD4649 /* AppDelegate.swift */,
-				3165D5AC2C8C3CBA00FD4649 /* SceneDelegate.swift */,
+				31FBA2A22CF79FC5007C66C8 /* App Stuff */,
 				3194EEFD2C95C953005EA48F /* Managers */,
 				31AC60F12C8C9BB7005476E5 /* Model */,
 				31AC60F42C8C9BD8005476E5 /* View */,
 				31AC60F22C8C9BBE005476E5 /* Controllers */,
-				3165D5B32C8C3CBC00FD4649 /* Assets.xcassets */,
-				3165D5B82C8C3CBC00FD4649 /* Info.plist */,
-				3194EF052C961AA6005EA48F /* MediaAssetModel.xcdatamodeld */,
 			);
 			path = "Secret Snap";
 			sourceTree = "<group>";
@@ -86,6 +89,8 @@
 		3194EEFD2C95C953005EA48F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				31FBA2AB2CFA2CCC007C66C8 /* HapticManager.swift */,
+				31FBA2A52CF8E8D9007C66C8 /* FileHandler.swift */,
 				31FF0A3C2C94C6F0009B0E63 /* PHPickerManager.swift */,
 				3194EF002C960AE6005EA48F /* CoreDataManager.swift */,
 			);
@@ -105,6 +110,7 @@
 			children = (
 				3165D5AE2C8C3CBA00FD4649 /* HomeVC.swift */,
 				313FE4722CC18FC2008865CD /* LockScreenVC.swift */,
+				31FBA2A92CFA10ED007C66C8 /* PreviewVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -117,6 +123,17 @@
 				31FF0A382C921E04009B0E63 /* Cells */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		31FBA2A22CF79FC5007C66C8 /* App Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				3165D5AA2C8C3CBA00FD4649 /* AppDelegate.swift */,
+				3165D5AC2C8C3CBA00FD4649 /* SceneDelegate.swift */,
+				3165D5B32C8C3CBC00FD4649 /* Assets.xcassets */,
+				3165D5B82C8C3CBC00FD4649 /* Info.plist */,
+			);
+			path = "App Stuff";
 			sourceTree = "<group>";
 		};
 		31FF0A382C921E04009B0E63 /* Cells */ = {
@@ -202,12 +219,15 @@
 			files = (
 				3165D5AF2C8C3CBA00FD4649 /* HomeVC.swift in Sources */,
 				31FF0A3D2C94C6F1009B0E63 /* PHPickerManager.swift in Sources */,
-				3194EF072C961AA6005EA48F /* MediaAssetModel.xcdatamodeld in Sources */,
+				31FBA2A12CF77CCE007C66C8 /* MediaAssetModel.xcdatamodeld in Sources */,
 				3165D5AB2C8C3CBA00FD4649 /* AppDelegate.swift in Sources */,
 				3165D5AD2C8C3CBA00FD4649 /* SceneDelegate.swift in Sources */,
+				31FBA2AA2CFA10ED007C66C8 /* PreviewVC.swift in Sources */,
+				31FBA2A62CF8E8DF007C66C8 /* FileHandler.swift in Sources */,
 				313FE4732CC18FC2008865CD /* LockScreenVC.swift in Sources */,
 				3194EEFF2C95CB7B005EA48F /* MediaAsset.swift in Sources */,
 				3194EF012C960AE6005EA48F /* CoreDataManager.swift in Sources */,
+				31FBA2AC2CFA2CCC007C66C8 /* HapticManager.swift in Sources */,
 				3194EEFB2C95AF22005EA48F /* HomeCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,7 +306,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -343,7 +363,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -362,7 +382,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T9HU79695H;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Secret Snap/Info.plist";
+				INFOPLIST_FILE = "Secret Snap/App Stuff/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Secret Snap";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -370,7 +390,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -393,7 +413,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T9HU79695H;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Secret Snap/Info.plist";
+				INFOPLIST_FILE = "Secret Snap/App Stuff/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Secret Snap";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -401,7 +421,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -439,14 +459,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3194EF052C961AA6005EA48F /* MediaAssetModel.xcdatamodeld */ = {
+		31FBA29F2CF77CCE007C66C8 /* MediaAssetModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3194EF062C961AA6005EA48F /* MediaAssetModel.xcdatamodel */,
+				31FBA2A02CF77CCE007C66C8 /* MediaAssetModel.xcdatamodel */,
 			);
-			currentVersion = 3194EF062C961AA6005EA48F /* MediaAssetModel.xcdatamodel */;
-			name = MediaAssetModel.xcdatamodeld;
-			path = "/Users/karanverma/Documents/Karan/Projects/iOS/Secret Snap/Secret Snap/MediaAssetModel.xcdatamodeld";
+			currentVersion = 31FBA2A02CF77CCE007C66C8 /* MediaAssetModel.xcdatamodel */;
+			path = MediaAssetModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

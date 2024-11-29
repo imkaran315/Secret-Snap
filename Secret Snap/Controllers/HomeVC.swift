@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import PhotosUI
+
 
 class HomeVC: UIViewController {
     
@@ -28,7 +28,6 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupCollectionView()
         fetchData()
     }
@@ -37,12 +36,13 @@ class HomeVC: UIViewController {
     // MARK: - IBAction
     @IBAction func addBtnPressed(_ sender: Any) {
         print("add")
+        HapticManager.shared.generateMediumImpactHaptic()
         self.presentPHPicker(selectionLimit: 10) { assets in
             self.mediaAssets.append(contentsOf: assets)
             for asset in assets {
                 CoreDataManager.shared.saveMediaAsset(asset)
-                self.fetchData()
             }
+            self.fetchData()
         }
     }
 }
@@ -57,7 +57,7 @@ extension HomeVC{
     
     private func fetchData(){
         print("fetch Data")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+        DispatchQueue.main.async {
             self.mediaAssets = CoreDataManager.shared.fetchAllMediaAssets()
         }
     }
@@ -93,16 +93,19 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let mediaAsset = mediaAssets[indexPath.row]
         
         cell.mediaAsset = mediaAsset
+        cell.indexPath = indexPath
+        cell.delegate = self
         
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! HomeCollectionViewCell
-        cell.thumbnailInfoLayer.isHidden = false
-    }
-    
-    
 }
 
-
+extension HomeVC : MediaCellDelegate{
+    func openMediaAt(_ indexPath: IndexPath) {
+        let vc = PreviewVC()
+        vc.mediaAsset = mediaAssets[indexPath.row]
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
+}
